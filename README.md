@@ -19,7 +19,7 @@ source literview/bin/activate
 ### Install Dependencies
 
 ```
-pip install dedomena
+pip install git+https://github.com/autonomio/dedomena.git
 pip install flask
 ```
 
