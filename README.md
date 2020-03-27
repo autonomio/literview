@@ -5,20 +5,23 @@ An exploration of leveraging Autonomio packages for researcher focused automated
 ### With Conda
 
 ```
-conda create -n karuna
-conda activate karuna
+conda create -n literview
+conda activate literview
 ```
 
 ### Without Conda
 
 ```
-python3 -m venv your_environment
-source your_environment/bin/activate
+python3 -m venv literview
+source literview/bin/activate
 ```
 
 ### Install Dependencies
-pip install flask
+
+```
 pip install dedomena
+pip install flask
+```
 
 ## Run
 
