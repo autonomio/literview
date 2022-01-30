@@ -8,25 +8,41 @@
     
     <form class="form-inline" action="/search" method="post" style="max-width: 440px;">
     
+      <div class="form-group col-12">
+        <span class="logo-type">LiterView</span>
+      </div>
+
     <div class="form-group col-12">
-      <input type="text" class="form-control form-css" placeholder="base keywords" name="base_keywords">
+      <input type="text" class="form-field" placeholder="Keywords to find articles with" name="base_keywords">
     </div>
 
     <div class="form-group col-12">
-      <input type="text" class="form-control form-css" placeholder="sample size" name="sample_size">
+      <input type="checkbox" class="checkmark" id="vehicle1" name="pubmed" value="PubMed">
+      <label class="checkmark-type" for="vehicle1"> PubMed</label>
+      <input type="checkbox" class="checkmark" id="vehicle2" name="arxiv" value="ArXiv">
+      <label class="checkmark-type" for="vehicle2"> ArXiv</label>
+      <input type="checkbox" class="checkmark" id="vehicle3" name="springer" value="Springer">
+      <label class="checkmark-type" for="vehicle3"> Springer</label>
     </div>
 
-    <div class="form-group col-12">
-      <input type="text" class="form-control form-css" placeholder="class keywords" name="class_keywords">
+    <button type="button" onclick="myFunction()">Advanced search >></button>
+    
+    <div id="hidden" class="form-group col-12">
+      <input type="text" class="form-field"  placeholder="Number of articles to draw" name="sample_size">
     </div>
 
-    <div class="form-group col-12">
-      <input type="text" class="form-control form-css" placeholder="class label" name="class_label">
+    <div id="hidden" class="form-group col-12">
+      <input type="text" class="form-field"  placeholder="Keywords to create sets with" name="class_keywords">
     </div>
 
+    <div id="hidden" class="form-group col-12">
+      <input type="text" class="form-field"  placeholder="Label for contrasting sets" name="class_label">
+    </div>
+
+
     <div class="form-group col-12">
 
-      <button type="image" class="button-image mx-auto d-block"><img src="static/send.jpg" width=120px;></button>
+      <button type="image" class="button-image mx-auto d-block"><img src="static/material-icon.png" width=120px;></button>
     
     </div>
 
@@ -56,5 +72,16 @@
       $( "#div-location").click(function() {
             $( "#input-location" ).select();
       });
+  </script>
+
+<script>
+  function myFunction() {
+    var x = document.getElementById("hidden");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
   </script>
 {% endblock %}

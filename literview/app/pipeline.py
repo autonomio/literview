@@ -11,7 +11,9 @@ def fetch_docs(keywords, n):
 
 def preprocess_docs(data):
 
-    data.dropna(inplace=True)
+    data = data.dropna()
+
+    data['abstract'] = data['abstract'].astype(str)
     
     data = data[data.abstract.str.len() != 0]
 
@@ -36,8 +38,8 @@ def create_class(data, keywords, class_label, balanced_classes=True):
     match['label'] = class_label
     no_match['label'] = 'no-' + class_label
     
-    if balanced_classes:
-        no_match = no_match.sample(n=len(match))
+    #if balanced_classes:
+    #    no_match = no_match.sample(n=len(match))
     
     return match.append(no_match)
 
@@ -69,6 +71,8 @@ def generate_visual(data,
 
     nlp = spacy.load('en_core_web_sm')
 
+    print(data.columns)
+
     corpus = st.CorpusFromPandas(data, 
                                  category_col='label', 
                                  text_col='abstract',
@@ -85,11 +89,23 @@ def generate_visual(data,
 
 def run(base_keywords, n, class_keywords, class_name):
 
+    base_keywords = base_keywords.lower()
+
+    # get documents from pubmed
     data = fetch_docs(base_keywords, n=n)
+
+    data['abstract'] = data['abstract'].str.lower()
+
+    # cleanup the data
     data = preprocess_docs(data)
+
+    # create classes based on user inputs
     data = create_class(data, class_keywords, class_name)
+
     data = remove_stopwords(data)
-    data = data[data.abstract.str.len() != 0]
+    #data = data[data['abstract'].str.len() != 0]
+    data.reset_index(inplace=True)
+
     out = generate_visual(data, class_name, class_name, 'no-' + class_name)
 
     return out

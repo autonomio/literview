@@ -4,9 +4,49 @@ body,html {
 
 body {
     font-size: 24px;
+	background-color: #E5E5E5;
+}
+
+.hidden {
+	display: none;
+}
+
+.form-field {
+
+	width: 400px;
+	height: 50px;
+	margin-bottom: 8px;
+	margin-top: 8px;
+	background: #FFFFFF;
+	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	padding-left: 12px;
+	font-size: 16px;
+
+}
+
+::placeholder {
+	color: rgb(208, 208, 208);
+	font-style: italic;
+  }
+
+.logo-type {
+	
+	margin: auto;
+	margin-bottom: 20px;
+	font-family: IBM Plex Serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 30px;
+	line-height: 39px;
+
+	text-align: center;
+	color: #1C2E43;
 }
 
 button, input[type="submit"], input[type="reset"] {
+
+	margin-top: 10px;
 	background: none;
 	color: inherit;
 	border: none;
@@ -14,8 +54,23 @@ button, input[type="submit"], input[type="reset"] {
 	font: inherit;
 	cursor: pointer;
     outline: inherit;
-	opacity: 20%;
+	opacity: 60%;
 	transition: opacity 0.2s ease-in-out;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+	height: 15px;
+	width: 15px;
+	background-color: #eee;
+	margin-left: 16px;
+	margin-right: 5px;
+  }
+
+.checkmark-type {
+	font-size: 15px;
+	color: grey;
+	margin-right: 15px;
 }
 
 button:hover {
