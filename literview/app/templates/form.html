@@ -17,11 +17,11 @@
     </div>
 
     <div class="form-group col-12">
-      <input type="checkbox" class="checkmark" id="vehicle1" name="pubmed" value="PubMed">
+      <input type="checkbox" class="checkmark" id="vehicle1" name="source_pubmed" value="PubMed">
       <label class="checkmark-type" for="vehicle1"> PubMed</label>
-      <input type="checkbox" class="checkmark" id="vehicle2" name="arxiv" value="ArXiv">
+      <input type="checkbox" class="checkmark" id="vehicle2" name="source_arxiv" value="ArXiv">
       <label class="checkmark-type" for="vehicle2"> ArXiv</label>
-      <input type="checkbox" class="checkmark" id="vehicle3" name="springer" value="Springer">
+      <input type="checkbox" class="checkmark" id="vehicle3" name="source_springer" value="Springer">
       <label class="checkmark-type" for="vehicle3"> Springer</label>
     </div>
     
@@ -30,29 +30,42 @@
     </div>
 
     <div class="form-group col-12">
-    
       <div class="range-wrap">
         <div class="range-value" id="rangeV"></div>
-        <input class="form-slider" id="range" type="range" min="100" max="2000" value="200" step="100">
+        <input class="form-slider" id="range" type="range" min="100" max="2000" value="200" step="100" name="sample_size">
       </div>
-        
     </div>
 
     <div class="form-group col-12">
-      <input type="text" class="form-field form-field-narrow"  placeholder="Grouping keyword" name="class_keywords">
- 
+      <input type="text" class="form-field form-field-narrow"  placeholder="Grouping keyword" name="class_keywords"> 
       <input type="text" class="form-field form-field-narrow"  placeholder="Grouping label" name="class_label">
     </div>
 
-
     <div class="form-group col-12">
-
       <button type="image" class="button-image mx-auto"><img src="static/material-icon.png" width=120px;></button>
-    
     </div>
 
   </form>
 
+    <div class="form-group col-12">
+    <center><button class='hidden-section-title' onclick="ShowAndHide()">HOW TO</button></center>
+      <div id="hidden-section"> The system works by taking one or more keywords separated by '|'
+        and building a sample of articles from the selected source. The sample is then grouped based
+        on one or more grouping keywords separated by '|' into two groups that are compared against each other.
+        For example "Mars" grouped based on if the article mentions "Delta-V" or not. The grouping label is 
+        for naming the groups. For example, if the label is "Delta-V", then the group names will become
+        "Delta-V" and "No-Delta-V" corresponding to group of "Mars" articles containing the term "Delta-V"
+        and the group of "Mars" articles not containing the term "Delta-V".
+      </div>
+  </div>
+
+  <div class="form-group col-12">
+    <div class="divider"></div>
+</div>
+
+
+ </div>
+</div>
 
 <script>
 
@@ -70,5 +83,24 @@ document.addEventListener("DOMContentLoaded", setValue);
 range.addEventListener('input', setValue);
 
 </script>
+
+<SCRIPT>
+  function ShowAndHide() {
+    var x = document.getElementById("hidden-section"); 
+    if (x.style.display == "none") 
+
+     {
+   x.style.display = "block";
+  }
+
+    else if((x.style.display == 'null')||(x.style.display == ""))
+  {
+    x.style.display = "block";
+  }
+  else {
+    x.style.display = "none";
+  }
+}
+  </SCRIPT>
 
 {% endblock %}

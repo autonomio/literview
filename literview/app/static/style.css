@@ -112,7 +112,8 @@ input[type=range] {
 .form-field-narrow {
 
 	margin: auto;
-	width: 190px;
+	width: 195px;
+	margin-left: 0px;
 }
 
 input:focus { 
@@ -264,3 +265,22 @@ button:hover {
 .select-css option {
 	font-weight:normal;
 }
+
+.hidden-section-title {
+	vertical-align: text-top!important;
+	font-size: 15px;
+}
+
+#hidden-section {
+	padding-top: 10px;
+	font-size: 15px;
+	max-width: 900px;
+	text-align: center;
+	margin: 0 auto;
+	background-color: rgba(173, 216, 230, 0);
+	color:rgb(91, 91, 91);
+	display: none;
+	position: fixed;
+	left: calc((50vw - 50%) * -1); /* add negative value equal to half of the scrollbar width if any */
+    transform: translate(calc(50vw - 50%));
+  }
