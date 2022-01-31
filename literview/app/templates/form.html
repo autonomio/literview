@@ -24,64 +24,51 @@
       <input type="checkbox" class="checkmark" id="vehicle3" name="springer" value="Springer">
       <label class="checkmark-type" for="vehicle3"> Springer</label>
     </div>
-
-    <button type="button" onclick="myFunction()">Advanced search >></button>
     
-    <div id="hidden" class="form-group col-12">
-      <input type="text" class="form-field"  placeholder="Number of articles to draw" name="sample_size">
+    <div class="form-group col-12">
+        <div class="divider"></div>
     </div>
 
-    <div id="hidden" class="form-group col-12">
-      <input type="text" class="form-field"  placeholder="Keywords to create sets with" name="class_keywords">
+    <div class="form-group col-12">
+    
+      <div class="range-wrap">
+        <div class="range-value" id="rangeV"></div>
+        <input class="form-slider" id="range" type="range" min="100" max="2000" value="200" step="100">
+      </div>
+        
     </div>
 
-    <div id="hidden" class="form-group col-12">
-      <input type="text" class="form-field"  placeholder="Label for contrasting sets" name="class_label">
+    <div class="form-group col-12">
+      <input type="text" class="form-field form-field-narrow"  placeholder="Grouping keyword" name="class_keywords">
+ 
+      <input type="text" class="form-field form-field-narrow"  placeholder="Grouping label" name="class_label">
     </div>
 
 
     <div class="form-group col-12">
 
-      <button type="image" class="button-image mx-auto d-block"><img src="static/material-icon.png" width=120px;></button>
+      <button type="image" class="button-image mx-auto"><img src="static/material-icon.png" width=120px;></button>
     
     </div>
 
   </form>
-  <script>
-      $("#input-name").focus(); 
-      function showPosition() {
-          if(navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-  
-          } else {
-              alert("Sorry, your browser does not support HTML5 geolocation.");
-          }
-      }
-      function successCallback(position) {
-          var positionInfo = "Your current location";
-          //document.getElementById("result").innerHTML = positionInfo;
-          $( "#input-location" ).val(positionInfo);
-      }
-      function errorCallback(error){
-          $( "#input-location" ).val("Dharamsala");
-      }
-      $( "#input-location" ).select(function() {
-          //$( "#input-location" ).val("location is set!");
-          showPosition();
-      });
-      $( "#div-location").click(function() {
-            $( "#input-location" ).select();
-      });
-  </script>
+
 
 <script>
-  function myFunction() {
-    var x = document.getElementById("hidden");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  }
-  </script>
+
+const
+  range = document.getElementById('range'),
+  rangeV = document.getElementById('rangeV'),
+  setValue = ()=>{
+    const
+      newValue = Number( (range.value - range.min) * 100 / (range.max - range.min) ),
+      newPosition = 10 - (newValue * 0.2);
+    rangeV.innerHTML = `<span>${range.value}</span>`;
+    rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
+  };
+document.addEventListener("DOMContentLoaded", setValue);
+range.addEventListener('input', setValue);
+
+</script>
+
 {% endblock %}
